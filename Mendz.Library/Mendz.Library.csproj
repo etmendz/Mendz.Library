@@ -11,6 +11,7 @@
     <Authors>Mendz</Authors>
     <PackageProjectUrl>https://github.com/etmendz/Mendz.Library</PackageProjectUrl>
     <RepositoryUrl>https://github.com/etmendz/Mendz.Library</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
