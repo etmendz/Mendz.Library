@@ -1,7 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Copyright>© 2017 Mendz. All rights reserved.</Copyright>
+    <PackageTags>helper utility</PackageTags>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Description>Provides helper and utility classes or types.</Description>
+    <Company>Mendz</Company>
+    <Authors>Mendz</Authors>
+    <PackageProjectUrl>https://github.com/etmendz/Mendz.Library</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/etmendz/Mendz.Library</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
 </Project>
