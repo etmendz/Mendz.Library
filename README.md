@@ -2,12 +2,12 @@
 Provides helper and utility classes or types.
 ## Namespace
 Mendz.Library
-## Contents
+### Contents
 Name | Description
 ---- | -----------
 IDGenerator | Represents an ID generator.
 SingletonBase | A base class to define a singleton.
-### IDGenerator
+#### IDGenerator
 Use the IDGenerator to create incremental Int32 IDs from a seed value (default is 1).
 ```C#
 using Mendz.Library;
@@ -27,7 +27,7 @@ using Mendz.Library;
 ...
 ```
 IDGenerator is thread-safe.
-### SingletonBase
+#### SingletonBase
 Use SingletonBase to define a class as a singleton.
 The derived class must have a private constructor that accepts no parameter.
 ```C#
