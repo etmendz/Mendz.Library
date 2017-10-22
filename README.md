@@ -14,7 +14,7 @@ IStreamingMapper | Defines a streaming mapper.
 #### CommandProcess
 Use the CommandProcess to start window-less commands and programs.
 The parameter should be an executable program.
-Note that, if possible, the ShellProcess waits for the launched process to exit.
+Note that, if possible, the CommandProcess waits for the launched process to exit.
 CommandProcess.Start() returns the exit code returned by the launched program.
 ```C#
 using Mendz.Library;
