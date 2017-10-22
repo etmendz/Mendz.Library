@@ -1,5 +1,5 @@
 # Mendz.Library
-Provides helper and utility classes or types.
+Provides helper and utility classes, types and extensions. 
 ## Namespaces
 ### Mendz.Library
 #### Contents
