@@ -6,12 +6,13 @@
     <PackageTags>helper utility</PackageTags>
     <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Description>Provides helper and utility classes or types.</Description>
+    <Description>Provides helper and utility types, classes and extensions.</Description>
     <Company>Mendz</Company>
     <Authors>Mendz</Authors>
     <PackageProjectUrl>https://github.com/etmendz/Mendz.Library</PackageProjectUrl>
     <RepositoryUrl>https://github.com/etmendz/Mendz.Library</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
