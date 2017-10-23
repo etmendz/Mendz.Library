@@ -11,6 +11,7 @@ IDGenerator | Represents an ID generator.
 SingletonBase | A base class to define a singleton.
 IGenericMapper | Defines a mapper.
 IStreamingMapper | Defines a streaming mapper.
+MapperExtensions | IGenericMapper and IStreamingMapper extensions.
 #### CommandProcess
 Use the CommandProcess to start window-less commands and programs.
 The parameter should be an executable program.
