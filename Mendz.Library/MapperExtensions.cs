@@ -17,8 +17,8 @@ namespace Mendz.Library
         /// <param name="genericMapper">The IGenericMapper instance.</param>
         /// <param name="input">The input to map.</param>
         /// <returns>The mapped output.</returns>
-        public static TOutput Map<TInput, TOutput>(this IGenericMapper<TInput, TOutput> 
-            genericMapper, TInput input) => genericMapper.Map(input, null);
+        public static TOutput Map<TInput, TOutput>(this IGenericMapper<TInput, TOutput> genericMapper, 
+            TInput input) => genericMapper.Map(input, null);
 
         /// <summary>
         /// Maps a stream of inputs and stream the outputs.
