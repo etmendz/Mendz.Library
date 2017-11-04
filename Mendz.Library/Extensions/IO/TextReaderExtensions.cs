@@ -41,14 +41,9 @@ namespace Mendz.Library.Extensions.IO
         public static string ReadAllMatch(this TextReader reader, string pattern, RegexOptions options = RegexOptions.None)
         {
             StringBuilder sb = new StringBuilder();
-            string line;
-            while (reader.Peek() > -1)
+            foreach (var line in reader.YieldLineMatch(pattern, options))
             {
-                line = reader.ReadLine();
-                if (line.IsMatch(pattern, options))
-                {
-                    sb.AppendLine(line);
-                }
+                sb.AppendLine(line);
             }
             return sb.ToString();
         }
