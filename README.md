@@ -124,6 +124,8 @@ Sample use:
 In an application domain/runtime, the first call to the Instance property instantiates the singleton.
 The instantiation of the singleton based on SingletonBase is thread-safe.
 Depending on the implementation, singletons derived from SingletonBase may not be thread-safe.
+#### Mappers
+Use the mappers to define data and type conversion/mapping operations. Derive from the StreamingGenericMapperBase class to implement a generic mapper that can also be used for streaming operations. If you've created IGenericMapper implementations instead, they can be injected to the GenericStreamingMapper for streaming operations.
 ### Mendz.Library.Extensions
 #### Contents
 Name | Description
