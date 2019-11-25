@@ -101,9 +101,6 @@ namespace UnitTest.Mendz.Library
             _error.Append(e.Data);
         }
 
-        private void Process_Exited(object sender, EventArgs e)
-        {
-            throw new WarningException("Exited.");
-        }
+        private void Process_Exited(object sender, EventArgs e) => throw new WarningException("Exited.");
     }
 }

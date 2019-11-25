@@ -26,14 +26,14 @@ namespace UnitTest.Mendz.Library
             Assert.IsInstanceOfType(ts, typeof(TestSingleton));
             Assert.AreSame(ts, TestSingleton.Instance);
             Assert.AreEqual(ts, TestSingleton.Instance);
-            Assert.ReferenceEquals(ts, TestSingleton.Instance);
-            StringAssert.Equals(ts.Info, TestSingleton.Instance.Info);
+            ReferenceEquals(ts, TestSingleton.Instance);
+            Equals(ts.Info, TestSingleton.Instance.Info);
             TestSingleton tsx = TestSingleton.Instance;
             Assert.IsInstanceOfType(tsx, typeof(TestSingleton));
             Assert.AreSame(tsx, ts);
             Assert.AreEqual(tsx, ts);
-            Assert.ReferenceEquals(tsx, ts);
-            StringAssert.Equals(tsx.Info, ts.Info);
+            ReferenceEquals(tsx, ts);
+            Equals(tsx.Info, ts.Info);
             Assert.IsInstanceOfType(TestSingleton.Instance, typeof(TestSingleton));
         }
     }

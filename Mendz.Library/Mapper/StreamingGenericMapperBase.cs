@@ -14,6 +14,7 @@ namespace Mendz.Library
 
         public virtual IEnumerable<TOutput> Map(IEnumerable<TInput> input, Func<TOutput> instance)
         {
+            if (input == null) throw new ArgumentNullException(nameof(input));
             foreach (var item in input)
             {
                 yield return Map(item, instance);

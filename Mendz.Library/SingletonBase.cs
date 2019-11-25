@@ -15,12 +15,11 @@ namespace Mendz.Library
         /// </summary>
         private static readonly Lazy<T> lazy = new Lazy<T>(() => (T)Activator.CreateInstance(typeof(T), true));
 
+#pragma warning disable CA1000 // Do not declare static members on generic types
         /// <summary>
         /// Gets the instance of the class T.
         /// </summary>
-        public static T Instance
-        {
-            get => lazy.Value;
-        }
+        public static T Instance => lazy.Value;
+#pragma warning restore CA1000 // Do not declare static members on generic types
     }
 }

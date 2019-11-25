@@ -27,6 +27,7 @@ namespace Mendz.Library
             EventHandler exitedHandler = null, 
             bool suppressException = false)
         {
+            if (startInfo == null) throw new ArgumentNullException(nameof(startInfo));
             startInfo.UseShellExecute = true;
             startInfo.RedirectStandardInput = false;
             startInfo.RedirectStandardOutput = false;
@@ -35,7 +36,9 @@ namespace Mendz.Library
             {
                 if (startInfo.ErrorDialogParentHandle == IntPtr.Zero)
                 {
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
                     throw new InvalidOperationException("Parent handle required.");
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
                 }
             }
             using (Process process = new Process())
@@ -44,10 +47,7 @@ namespace Mendz.Library
                 {
                     process.StartInfo = startInfo;
                     process.EnableRaisingEvents = true;
-                    if (exitedHandler != null)
-                    {
-                        process.Exited += exitedHandler;
-                    }
+                    if (exitedHandler != null) process.Exited += exitedHandler;
                     if (process.Start())
                     {
                         process.WaitForExit();
@@ -57,10 +57,7 @@ namespace Mendz.Library
                 }
                 catch
                 {
-                    if (!suppressException)
-                    {
-                        throw;
-                    }
+                    if (!suppressException) throw;
                 }
                 finally
                 {
@@ -68,7 +65,9 @@ namespace Mendz.Library
                     {
                         process.CloseMainWindow();
                     }
+#pragma warning disable CA1031 // Do not catch general exception types
                     catch
+#pragma warning restore CA1031 // Do not catch general exception types
                     {
                         // Shhh...
                     }

@@ -13,7 +13,12 @@ IGenericMapper | Defines a mapper.
 IStreamingMapper | Defines a streaming mapper.
 MapperExtensions | IGenericMapper and IStreamingMapper extensions.
 StreamingGenericMapperBase | The base class of a streaming mapper that also implements its generic mapper.
-GenericStreamingMapper | Represents a streaming mapper with generic mapper dependency injection.
+GenericStreamingMapper | Represents a streaming mapper that uses a provided generic mapper.
+IAsyncGenericMapper | Defines an asynchronous mapper.
+IAsyncStreamingMapper | Defines an asynchronous streaming mapper.
+AsyncMapperExtensions | IAsyncGenericMapper and IAsyncStreamingMapper extensions.
+AsyncStreamingGenericMapperBase | The base class of an asynchronous streaming mapper that also implements its asynchronous generic mapper.
+AsyncGenericStreamingMapper | Represents an asynchronous streaming mapper that uses a provided asynchronous generic mapper
 #### CommandProcess
 Use the CommandProcess to start window-less commands and programs.
 The parameter should be an executable program.
@@ -65,7 +70,7 @@ using Mendz.Library;
     ...
         ShellProcess.Start(new ProcessStartInfo() { FileName = "notepad.exe" });
         ShellProcess.Start(new ProcessStartInfo() { FileName = "https://www.bing.com" });
-        ShellProcess.Start(new ProcessStartInfo() { FileName = @"D:\New Microsoft Word Document.docx" }, Process_Exited);
+        ShellProcess.Start(new ProcessStartInfo() { FileName = @"C:\New Microsoft Word Document.docx" }, Process_Exited);
     ...
     private void Process_Exited(object sender, EventArgs e)
     {
@@ -126,6 +131,8 @@ The instantiation of the singleton based on SingletonBase is thread-safe.
 Depending on the implementation, singletons derived from SingletonBase may not be thread-safe.
 #### Mappers
 Use the mappers to define data and type conversion/mapping operations. Derive from the StreamingGenericMapperBase class to implement a generic mapper that can also be used for streaming operations. If you've created IGenericMapper implementations instead, they can be injected to the GenericStreamingMapper for streaming operations.
+#### Asynchronous Mappers
+Use the asynchronous mappers to define asynchronous data and type conversion/mapping operations. Derive from the AsyncStreamingGenericMapperBase class to implement an asynchronous  generic mapper that can also be used for asynchronous streaming operations. If you've created IAsyncGenericMapper implementations instead, they can be injected to the AsyncGenericStreamingMapper for asynchronous streaming operations.
 ### Mendz.Library.Extensions
 #### Contents
 Name | Description
@@ -142,5 +149,9 @@ TextReaderExtensions| TextReader class extensions.
 - ReadAllMatch() reads all lines that match a regular expression.
 - YieldLine() yields lines read. 
 - YieldLineMatch() yields lines read that match a regular expression. 
+- ReadLineMatchAsync() asynchronously reads a line that matches a regular expression.
+- ReadAllMatchAsync() asynchronously reads all lines that match a regular expression.
+- YieldLineAsync() asynchronously yields lines read. 
+- YieldLineMatchAsync() asynchronously yields lines read that match a regular expression. 
 ## NuGet It...
 https://www.nuget.org/packages/Mendz.Library/

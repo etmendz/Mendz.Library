@@ -18,8 +18,12 @@ namespace Mendz.Library
         /// <param name="genericMapper">The IGenericMapper instance.</param>
         /// <param name="input">The input to map.</param>
         /// <returns>The mapped output.</returns>
-        public static TOutput Map<TInput, TOutput>(this IGenericMapper<TInput, TOutput> genericMapper, 
-            TInput input) => genericMapper.Map(input, null);
+        public static TOutput Map<TInput, TOutput>(this IGenericMapper<TInput, TOutput> genericMapper,
+            TInput input)
+        {
+            if (genericMapper == null) throw new ArgumentNullException(nameof(genericMapper));
+            return genericMapper.Map(input, null);
+        }
 
         /// <summary>
         /// Maps a stream of inputs and stream the outputs.
@@ -31,7 +35,11 @@ namespace Mendz.Library
         /// <param name="streamingMapper">The IStreamingMapper instance.</param>
         /// <param name="input">The input to map.</param>
         /// <returns>The mapped output.</returns>
-        public static IEnumerable<TOutput> Map<TInput, TOutput>(this IStreamingMapper<TInput, TOutput> streamingMapper, 
-            IEnumerable<TInput> input) => streamingMapper.Map(input, null);
+        public static IEnumerable<TOutput> Map<TInput, TOutput>(this IStreamingMapper<TInput, TOutput> streamingMapper,
+            IEnumerable<TInput> input)
+        {
+            if (streamingMapper == null) throw new ArgumentNullException(nameof(streamingMapper));
+            return streamingMapper.Map(input, null);
+        }
     }
 }

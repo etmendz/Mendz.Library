@@ -17,18 +17,18 @@ namespace UnitTest.Mendz.Library
             ShellProcess.Start(new ProcessStartInfo() { FileName = "https://www.bing.com" });
             ShellProcess.Start(new ProcessStartInfo()
             {
-                FileName = @"D:\New Microsoft Word Document.docx"
+                FileName = @"C:\New Microsoft Word Document.docx"
             });
             Assert.ThrowsException<WarningException>(() =>
             {
                 ShellProcess.Start(new ProcessStartInfo()
                 {
-                    FileName = @"D:\New Microsoft Word Document.docx"
+                    FileName = @"C:\New Microsoft Word Document.docx"
                 }, Process_Exited);
             });
             ShellProcess.Start(new ProcessStartInfo()
             {
-                FileName = @"D:\New Microsoft Word Document.docx"
+                FileName = @"C:\New Microsoft Word Document.docx"
             }, Process_Exited, true);
             ShellProcess.Start(new ProcessStartInfo()
             {
@@ -48,9 +48,6 @@ namespace UnitTest.Mendz.Library
             });
         }
 
-        private void Process_Exited(object sender, EventArgs e)
-        {
-            throw new WarningException("Exited.");
-        }
+        private void Process_Exited(object sender, EventArgs e) => throw new WarningException("Exited.");
     }
 }

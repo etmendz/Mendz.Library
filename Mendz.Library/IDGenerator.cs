@@ -8,16 +8,13 @@ namespace Mendz.Library
     /// </summary>
     public class IDGenerator
     {
-        private object o = new object();
+        private readonly object o = new object();
         private volatile int _id = 1;
 
         /// <summary>
         /// Gets the current ID.
         /// </summary>
-        public int ID
-        {
-            get => _id;
-        }
+        public int ID => _id;
 
         /// <summary>
         /// Initializes an IDGenerator.
@@ -41,14 +38,10 @@ namespace Mendz.Library
         {
             lock (o)
             {
-                if (seed < 1)
-                {
-                    throw new ArgumentOutOfRangeException("seed", "The seed cannot be less than 1.");
-                }
-                if (_id < seed)
-                {
-                    _id = seed;
-                }
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
+                if (seed < 1) throw new ArgumentOutOfRangeException(nameof(seed), "The seed cannot be less than 1.");
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
+                if (_id < seed) _id = seed;
             }
         }
 

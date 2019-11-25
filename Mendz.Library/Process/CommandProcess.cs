@@ -44,6 +44,7 @@ namespace Mendz.Library
             bool suppressException = false,
             int timeout = -1)
         {
+            if (startInfo == null) throw new ArgumentNullException(nameof(startInfo));
             int exitCode = 0;
             startInfo.UseShellExecute = false;
             startInfo.ErrorDialog = false;
@@ -52,17 +53,15 @@ namespace Mendz.Library
             startInfo.RedirectStandardInput = false;
             if (startInfo.RedirectStandardOutput)
             {
-                if (outputHandler == null)
-                {
-                    throw new InvalidOperationException("Output handler is required.");
-                }
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
+                if (outputHandler == null) throw new InvalidOperationException("Output handler is required.");
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
             }
             if (startInfo.RedirectStandardError)
             {
-                if (errorHandler == null)
-                {
-                    throw new InvalidOperationException("Error handler is required.");
-                }
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
+                if (errorHandler == null) throw new InvalidOperationException("Error handler is required.");
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
             }
             timeout = timeout <= 0 ? -1 : timeout;
             using (Process process = new Process())
@@ -81,20 +80,11 @@ namespace Mendz.Library
                         startInfo.RedirectStandardError = true;
                         process.ErrorDataReceived += errorHandler;
                     }
-                    if (exitedHandler != null)
-                    {
-                        process.Exited += exitedHandler;
-                    }
+                    if (exitedHandler != null) process.Exited += exitedHandler;
                     if (process.Start())
                     {
-                        if (startInfo.RedirectStandardOutput)
-                        {
-                            process.BeginOutputReadLine();
-                        }
-                        if (startInfo.RedirectStandardError)
-                        {
-                            process.BeginErrorReadLine();
-                        }
+                        if (startInfo.RedirectStandardOutput) process.BeginOutputReadLine();
+                        if (startInfo.RedirectStandardError) process.BeginErrorReadLine();
                         if (!process.WaitForExit(timeout))
                         {
                             process.Kill();
@@ -106,10 +96,7 @@ namespace Mendz.Library
                 }
                 catch
                 {
-                    if (!suppressException)
-                    {
-                        throw;
-                    }
+                    if (!suppressException) throw;
                 }
             }
             return exitCode;
