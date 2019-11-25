@@ -18,7 +18,7 @@ IAsyncGenericMapper | Defines an asynchronous mapper.
 IAsyncStreamingMapper | Defines an asynchronous streaming mapper.
 AsyncMapperExtensions | IAsyncGenericMapper and IAsyncStreamingMapper extensions.
 AsyncStreamingGenericMapperBase | The base class of an asynchronous streaming mapper that also implements its asynchronous generic mapper.
-AsyncGenericStreamingMapper | Represents an asynchronous streaming mapper that uses a provided asynchronous generic mapper
+AsyncGenericStreamingMapper | Represents an asynchronous streaming mapper that uses a provided asynchronous generic mapper.
 #### CommandProcess
 Use the CommandProcess to start window-less commands and programs.
 The parameter should be an executable program.
