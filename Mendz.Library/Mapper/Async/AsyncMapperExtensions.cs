@@ -45,5 +45,25 @@ namespace Mendz.Library
                 yield return item;
             }
         }
+
+        /// <summary>
+        /// Asynchronously maps a stream of inputs and stream the outputs.
+        /// It is assumed that the IAsyncStreamingMapper implementation can internally create TOutput
+        /// without relying on the Func<TOutput> instance, which is passed as null.
+        /// </summary>
+        /// <typeparam name="TInput">The input type.</typeparam>
+        /// <typeparam name="TOutput">The output type.</typeparam>
+        /// <param name="streamingMapper">The IAsyncStreamingMapper instance.</param>
+        /// <param name="input">The input to map.</param>
+        /// <returns>The mapped output.</returns>
+        public static async IAsyncEnumerable<TOutput> MapAsync<TInput, TOutput>(this IAsyncStreamingMapper<TInput, TOutput> streamingMapper,
+            IEnumerable<TInput> input)
+        {
+            if (streamingMapper == null) throw new ArgumentNullException(nameof(streamingMapper));
+            await foreach (var item in streamingMapper.MapAsync(input, null))
+            {
+                yield return item;
+            }
+        }
     }
 }

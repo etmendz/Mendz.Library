@@ -34,12 +34,9 @@ namespace Mendz.Library
             startInfo.RedirectStandardError = false;
             if (startInfo.ErrorDialog == true)
             {
-                if (startInfo.ErrorDialogParentHandle == IntPtr.Zero)
-                {
 #pragma warning disable CA1303 // Do not pass literals as localized parameters
-                    throw new InvalidOperationException("Parent handle required.");
+                if (startInfo.ErrorDialogParentHandle == IntPtr.Zero) throw new InvalidOperationException("Parent handle required.");
 #pragma warning restore CA1303 // Do not pass literals as localized parameters
-                }
             }
             using (Process process = new Process())
             {

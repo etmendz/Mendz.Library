@@ -21,5 +21,14 @@ namespace Mendz.Library
                 yield return await MapAsync(item, instance).ConfigureAwait(false);
             }
         }
+
+        public virtual async IAsyncEnumerable<TOutput> MapAsync(IEnumerable<TInput> input, Func<TOutput> instance)
+        {
+            if (input == null) throw new ArgumentNullException(nameof(input));
+            foreach (var item in input)
+            {
+                yield return await MapAsync(item, instance).ConfigureAwait(false);
+            }
+        }
     }
 }
