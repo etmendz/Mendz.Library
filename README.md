@@ -18,7 +18,7 @@ IAsyncGenericMapper | Defines an asynchronous mapper.
 IAsyncStreamingMapper | Defines an asynchronous streaming mapper.
 AsyncMapperExtensions | IAsyncGenericMapper and IAsyncStreamingMapper extensions.
 AsyncStreamingGenericMapperBase | The base class of an asynchronous streaming mapper that also implements its asynchronous generic mapper.
-AsyncGenericStreamingMapper | Represents an asynchronous streaming mapper that uses a provided asynchronous generic mapper
+AsyncGenericStreamingMapper | Represents an asynchronous streaming mapper that uses a provided asynchronous generic mapper.
 #### CommandProcess
 Use the CommandProcess to start window-less commands and programs.
 The parameter should be an executable program.
@@ -130,9 +130,9 @@ In an application domain/runtime, the first call to the Instance property instan
 The instantiation of the singleton based on SingletonBase is thread-safe.
 Depending on the implementation, singletons derived from SingletonBase may not be thread-safe.
 #### Mappers
-Use the mappers to define data and type conversion/mapping operations. Derive from the StreamingGenericMapperBase class to implement a generic mapper that can also be used for streaming operations. If you've created IGenericMapper implementations instead, they can be injected to the GenericStreamingMapper for streaming operations.
+Use the mappers to define data and type conversion/mapping operations. Derive from the StreamingGenericMapperBase class to implement a generic mapper that can also be used for streaming operations. If you've created IGenericMapper implementations instead, they can be provided to the GenericStreamingMapper for streaming operations.
 #### Asynchronous Mappers
-Use the asynchronous mappers to define asynchronous data and type conversion/mapping operations. Derive from the AsyncStreamingGenericMapperBase class to implement an asynchronous  generic mapper that can also be used for asynchronous streaming operations. If you've created IAsyncGenericMapper implementations instead, they can be injected to the AsyncGenericStreamingMapper for asynchronous streaming operations.
+Use the asynchronous mappers to define asynchronous data and type conversion/mapping operations. Derive from the AsyncStreamingGenericMapperBase class to implement an asynchronous  generic mapper that can also be used for asynchronous streaming operations. If you've created IAsyncGenericMapper implementations instead, they can be provided to the AsyncGenericStreamingMapper for asynchronous streaming operations.
 ### Mendz.Library.Extensions
 #### Contents
 Name | Description
