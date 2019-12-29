@@ -38,9 +38,7 @@ namespace Mendz.Library
         {
             lock (o)
             {
-#pragma warning disable CA1303 // Do not pass literals as localized parameters
                 if (seed < 1) throw new ArgumentOutOfRangeException(nameof(seed), "The seed cannot be less than 1.");
-#pragma warning restore CA1303 // Do not pass literals as localized parameters
                 if (_id < seed) _id = seed;
             }
         }

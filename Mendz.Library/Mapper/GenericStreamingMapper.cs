@@ -15,16 +15,6 @@ namespace Mendz.Library
         /// </summary>
         public IGenericMapper<TInput, TOutput> GenericMapper { get; private set; }
 
-        /*
-        /// <summary>
-        /// Creates an instance of a streaming generic mapper.
-        /// </summary>
-        public GenericStreamingMapper()
-        {
-            // The caller must set the GenericMapper property.
-        }
-        */
-
         /// <summary>
         /// Creates an instance of a streaming generic mapper given the generic mapper.
         /// </summary>
@@ -34,11 +24,6 @@ namespace Mendz.Library
 
         public IEnumerable<TOutput> Map(IEnumerable<TInput> input, Func<TOutput> instance)
         {
-            /*
-#pragma warning disable CA1303 // Do not pass literals as localized parameters
-            if (GenericMapper == null) throw new InvalidOperationException("The GenericMapper property is null or not set.");
-#pragma warning restore CA1303 // Do not pass literals as localized parameters
-            */
             if (input == null) throw new ArgumentNullException(nameof(input));
             foreach (var item in input)
             {

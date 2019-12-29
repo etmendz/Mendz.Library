@@ -133,6 +133,16 @@ Depending on the implementation, singletons derived from SingletonBase may not b
 Use the mappers to define data and type conversion/mapping operations. Derive from the StreamingGenericMapperBase class to implement a generic mapper that can also be used for streaming operations. If you've created IGenericMapper implementations instead, they can be provided to the GenericStreamingMapper for streaming operations.
 #### Asynchronous Mappers
 Use the asynchronous mappers to define asynchronous data and type conversion/mapping operations. Derive from the AsyncStreamingGenericMapperBase class to implement an asynchronous  generic mapper that can also be used for asynchronous streaming operations. If you've created IAsyncGenericMapper implementations instead, they can be provided to the AsyncGenericStreamingMapper for asynchronous streaming operations.
+### Mendz.Library.Conventions
+#### Contents
+Name | Description
+---- | -----------
+StampedFileNameBase| The base class for stamped filenames.
+StampedFileName| Defines a stamped filename.
+DateStampedFileName| Defines a date stamped filename.
+DateTimeStampedFileName| Defines a date/time stamped filename.
+FileOrganizerMode| Enumerates the file organizer modes.
+FileOrganizer| Provides methods to organize files in folders by date, year/month and year.
 ### Mendz.Library.Extensions
 #### Contents
 Name | Description
@@ -153,5 +163,8 @@ TextReaderExtensions| TextReader class extensions.
 - ReadAllMatchAsync() asynchronously reads all lines that match a regular expression.
 - YieldLineAsync() asynchronously yields lines read. 
 - YieldLineMatchAsync() asynchronously yields lines read that match a regular expression. 
+TextWriterExtensions| TextWriter class extensions.
+- WriteLineMatch() Writes a line that matches a regular expression.
+- WriteLineMatchAsync() asynchronously writes a line that matches a regular expression.
 ## NuGet It...
 https://www.nuget.org/packages/Mendz.Library/

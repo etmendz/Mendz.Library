@@ -12,9 +12,9 @@
     <PackageProjectUrl>https://github.com/etmendz/Mendz.Library</PackageProjectUrl>
     <RepositoryUrl>https://github.com/etmendz/Mendz.Library</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.3.0.1</Version>
-    <AssemblyVersion>1.3.0.1</AssemblyVersion>
-    <FileVersion>1.3.0.1</FileVersion>
+    <Version>1.3.1</Version>
+    <AssemblyVersion>1.3.1.0</AssemblyVersion>
+    <FileVersion>1.3.1.0</FileVersion>
     <PackageReleaseNotes>New features, enhancements and documentation updates.</PackageReleaseNotes>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7">
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

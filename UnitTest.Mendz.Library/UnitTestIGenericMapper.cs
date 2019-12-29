@@ -4,12 +4,6 @@ using System;
 
 namespace UnitTest.Mendz.Library
 {
-    public class Person
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
-    }
-
     public class PersonCSVToPerson : IGenericMapper<string, Person>
     {
         public Person Map(string input, Func<Person> instance)

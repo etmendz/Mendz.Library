@@ -17,6 +17,12 @@ namespace Mendz.Library
         /// <param name="startInfo">The ProcessStartInfo instance.</param>
         /// <param name="exitedHandler">The exited event handler.</param>
         /// <param name="suppressException">The indicator to suppress exceptions.</param>
+        /// <exception cref="ArgumentNullException">
+        /// The <paramref name="startInfo"/> parameter is required.
+        /// </exception>
+        /// <exception cref="InvalidOperationException">
+        /// If the ProcessStartInfo.ErrorDialog is true, the parent handle is required.
+        /// </exception>
         /// <remarks>
         /// Redirection of standard input, output and error are always set to false.
         /// If ErrorDialog is true, the ErrorDialogParentHandle is required.
@@ -34,40 +40,36 @@ namespace Mendz.Library
             startInfo.RedirectStandardError = false;
             if (startInfo.ErrorDialog == true)
             {
-#pragma warning disable CA1303 // Do not pass literals as localized parameters
                 if (startInfo.ErrorDialogParentHandle == IntPtr.Zero) throw new InvalidOperationException("Parent handle required.");
-#pragma warning restore CA1303 // Do not pass literals as localized parameters
             }
-            using (Process process = new Process())
+            using Process process = new Process();
+            try
+            {
+                process.StartInfo = startInfo;
+                process.EnableRaisingEvents = true;
+                if (exitedHandler != null) process.Exited += exitedHandler;
+                if (process.Start())
+                {
+                    process.WaitForExit();
+                    while (!process.HasExited) { }
+                    process.CloseMainWindow();
+                }
+            }
+            catch
+            {
+                if (!suppressException) throw;
+            }
+            finally
             {
                 try
                 {
-                    process.StartInfo = startInfo;
-                    process.EnableRaisingEvents = true;
-                    if (exitedHandler != null) process.Exited += exitedHandler;
-                    if (process.Start())
-                    {
-                        process.WaitForExit();
-                        while (!process.HasExited) { }
-                        process.CloseMainWindow();
-                    }
+                    process.CloseMainWindow();
                 }
-                catch
-                {
-                    if (!suppressException) throw;
-                }
-                finally
-                {
-                    try
-                    {
-                        process.CloseMainWindow();
-                    }
 #pragma warning disable CA1031 // Do not catch general exception types
-                    catch
+                catch
 #pragma warning restore CA1031 // Do not catch general exception types
-                    {
-                        // Shhh...
-                    }
+                {
+                    // Shhh...
                 }
             }
         }

@@ -22,6 +22,13 @@ namespace Mendz.Library
         /// <param name="suppressException">The indicator to suppress exceptions.</param>
         /// <param name="timeout">The timeout setting in milliseconds. Default is -1. If 0 or less, defaults to -1.</param>
         /// <returns>The exit code.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// The <paramref name="startInfo"/> parameter is required.
+        /// </exception>
+        /// <exception cref="InvalidOperationException">
+        /// If the ProcessStartInfo.RedirectStandardOutput is true, the output handler is required.
+        /// If the ProcessStartInfo.RedirectStandardError is true, the error handler is required.
+        /// </exception>
         /// <remarks>
         /// <para>
         /// Redirection of standard input is always set to false.
@@ -53,15 +60,11 @@ namespace Mendz.Library
             startInfo.RedirectStandardInput = false;
             if (startInfo.RedirectStandardOutput)
             {
-#pragma warning disable CA1303 // Do not pass literals as localized parameters
                 if (outputHandler == null) throw new InvalidOperationException("Output handler is required.");
-#pragma warning restore CA1303 // Do not pass literals as localized parameters
             }
             if (startInfo.RedirectStandardError)
             {
-#pragma warning disable CA1303 // Do not pass literals as localized parameters
                 if (errorHandler == null) throw new InvalidOperationException("Error handler is required.");
-#pragma warning restore CA1303 // Do not pass literals as localized parameters
             }
             timeout = timeout <= 0 ? -1 : timeout;
             using (Process process = new Process())
