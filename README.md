@@ -148,25 +148,26 @@ FileOrganizer| Provides methods to organize files in folders by date, year/month
 Name | Description
 ---- | -----------
 StringExtensions| String class extensions.
-- IsMatch() tests if a string matches a regular expression.
-- ReplaceMatch() replaces each part of a string that matches a regular expression.
+- IsMatch() tests if a string matches a regular expression. 
+- ReplaceMatch() replaces each part of a string that matches a regular expression. 
 ### Mendz.Library.Extensions.IO
 #### Contents
 Name | Description
 ---- | -----------
 TextReaderExtensions| TextReader class extensions.
-- ReadLineMatch() reads a line that matches a regular expression.
-- ReadAllMatch() reads all lines that match a regular expression.
+- ReadLineMatch() reads a line that matches a regular expression. 
+- ReadAllMatch() reads all lines that match a regular expression. 
 - YieldLine() yields lines read. 
 - YieldLineMatch() yields lines read that match a regular expression. 
-- ReadLineMatchAsync() asynchronously reads a line that matches a regular expression.
-- ReadAllMatchAsync() asynchronously reads all lines that match a regular expression.
+- ReadLineMatchAsync() asynchronously reads a line that matches a regular expression. 
+- ReadAllMatchAsync() asynchronously reads all lines that match a regular expression. 
 - YieldLineAsync() asynchronously yields lines read. 
 - YieldLineMatchAsync() asynchronously yields lines read that match a regular expression. 
+
 Name | Description
 ---- | -----------
 TextWriterExtensions| TextWriter class extensions.
-- WriteLineMatch() Writes a line that matches a regular expression.
-- WriteLineMatchAsync() asynchronously writes a line that matches a regular expression.
+- WriteLineMatch() Writes a line that matches a regular expression. 
+- WriteLineMatchAsync() asynchronously writes a line that matches a regular expression. 
 ## NuGet It...
 https://www.nuget.org/packages/Mendz.Library/
