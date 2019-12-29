@@ -163,6 +163,8 @@ TextReaderExtensions| TextReader class extensions.
 - ReadAllMatchAsync() asynchronously reads all lines that match a regular expression.
 - YieldLineAsync() asynchronously yields lines read. 
 - YieldLineMatchAsync() asynchronously yields lines read that match a regular expression. 
+Name | Description
+---- | -----------
 TextWriterExtensions| TextWriter class extensions.
 - WriteLineMatch() Writes a line that matches a regular expression.
 - WriteLineMatchAsync() asynchronously writes a line that matches a regular expression.
