@@ -137,24 +137,45 @@ Use the asynchronous mappers to define asynchronous data and type conversion/map
 #### Contents
 Name | Description
 ---- | -----------
-StampedFileNameBase| The base class for stamped filenames.
-StampedFileName| Defines a stamped filename.
-DateStampedFileName| Defines a date stamped filename.
-DateTimeStampedFileName| Defines a date/time stamped filename.
-FileOrganizerMode| Enumerates the file organizer modes.
-FileOrganizer| Provides methods to organize files in folders by date, year/month and year.
+StampedFileNameBase | The base class for stamped filenames.
+StampedFileName | Defines a stamped filename.
+DateStampedFileName | Defines a date stamped filename.
+DateTimeStampedFileName | Defines a date/time stamped filename.
+FileOrganizerMode | Enumerates the file organizer modes.
+FileOrganizer | Provides methods to organize files in folders by date, year/month and year.
+StreamingPropertyMapper | A convention-based mapper that uses System.Reflection to map matching properties in the input type to the output type.
+StreamingKeyValueMapper | A convention-based mapper that maps the indexed input key values to the indexed output key values.
+StreamingFromKeyValueMapper | A convention-based mapper that uses System.Reflection to map indexed input key values to the output's properties.
+StreamingToKeyValueMapper | A convention-based mapper that uses System.Reflection to map the input's properties to the indexed output key values.
+#### StreamingPropertyMapper
+The StreamingPropertyMapper implements the StreamingGenericMapperBase. Given two types having properties with matching names (case-sensitive) and types, StreamingPropertyMapper can automatically map them. Note that .Net's built-in type conversion and compatibility rules apply.
+```C#
+    ...
+    Source source = new Source();
+    ...
+    StreamingPropertyMapper<Source, Target> spm = new StreamingPropertyMapper<Source, Target>();
+    Target target = spm.Map(source, () => new Target());
+    ...
+```
+Custom conversion and mapping can be achieved if a handler is passed to the constructor. For example, the implementation can switch through the property names in order to apply custom or default behaviors.
+
+As an implementation of the StreamingGenericMapperBase, StreamingPropertyMapper can also be used to stream through a collection of sources and map them to a collection of targets.
+#### Streaming*KeyValueMapper
+The StreamingKeyValueMapper and its variants, StreamingFromKeyValueMapper and StreamingToKeyValueMapper, implement the StreamingGenericMapperBase. They allow automatic mapping of matching properties and/or key indexed values between two types, where either one or both have indexers or key-value paired members. The handler passed to the instance can be implemented to evaluate the key passed in order to perform the mapping.
+
+As implementations of the StreamingGenericMapperBase, the StreamingKeyValueMapper, StreamingFromKeyValueMapper and StreamingToKeyValueMapper classes can also be used to stream through a collection of sources and map them to a collection of targets.
 ### Mendz.Library.Extensions
 #### Contents
 Name | Description
 ---- | -----------
-StringExtensions| String class extensions.
+StringExtensions | String class extensions.
 - IsMatch() tests if a string matches a regular expression. 
 - ReplaceMatch() replaces each part of a string that matches a regular expression. 
 ### Mendz.Library.Extensions.IO
 #### Contents
 Name | Description
 ---- | -----------
-TextReaderExtensions| TextReader class extensions.
+TextReaderExtensions | TextReader class extensions.
 - ReadLineMatch() reads a line that matches a regular expression. 
 - ReadAllMatch() reads all lines that match a regular expression. 
 - YieldLine() yields lines read. 
@@ -166,7 +187,7 @@ TextReaderExtensions| TextReader class extensions.
 
 Name | Description
 ---- | -----------
-TextWriterExtensions| TextWriter class extensions.
+TextWriterExtensions | TextWriter class extensions.
 - WriteLineMatch() Writes a line that matches a regular expression. 
 - WriteLineMatchAsync() asynchronously writes a line that matches a regular expression. 
 ## NuGet It...
