@@ -148,12 +148,12 @@ StreamingKeyValueMapper | A convention-based mapper that maps the indexed input 
 StreamingFromKeyValueMapper | A convention-based mapper that uses System.Reflection to map indexed input key values to the output's properties.
 StreamingToKeyValueMapper | A convention-based mapper that uses System.Reflection to map the input's properties to the indexed output key values.
 #### StreamingPropertyMapper
-The StreamingPropertyMapper implements the StreamingGenericMapperBase. Given two types having properties with matching names (case-sensitive) and types, StreamingPropertyMapper can automatically map them. Note that .Net's built-in type conversion and compatibility rules apply.
+The StreamingPropertyMapper implements the StreamingGenericMapperBase. Given two types having properties with matching names (case-sensitive) and types, StreamingPropertyMapper can automatically map them.
 ```C#
     ...
     Source source = new Source();
     ...
-    StreamingPropertyMapper<Source, Target> spm = new StreamingPropertyMapper<Source, Target>();
+    var spm = new StreamingPropertyMapper<Source, Target>();
     Target target = spm.Map(source, () => new Target());
     ...
 ```
@@ -161,8 +161,34 @@ Custom conversion and mapping can be achieved if a handler is passed to the cons
 
 As an implementation of the StreamingGenericMapperBase, StreamingPropertyMapper can also be used to stream through a collection of sources and map them to a collection of targets.
 #### Streaming*KeyValueMapper
-The StreamingKeyValueMapper and its variants, StreamingFromKeyValueMapper and StreamingToKeyValueMapper, implement the StreamingGenericMapperBase. They allow automatic mapping of matching properties and/or key indexed values between two types, where either one or both have indexers or key-value paired members. The handler passed to the instance can be implemented to evaluate the key passed in order to perform the mapping.
+The StreamingKeyValueMapper and its variants, StreamingFromKeyValueMapper and StreamingToKeyValueMapper, implement the StreamingGenericMapperBase. They allow automatic mapping of matching properties and/or key indexed values between two types, where either one or both have indexers or key-value paired members. The required handler passed to the instance can be implemented to evaluate the key passed in order to perform the mapping. Note that .Net's built-in type conversion and compatibility rules apply.
+```C#
+    IndexedSource indexedSource = new IndexedSource();
+    IndexedTarget indexedTarget;
+    ...
+    // where both source and target are indexed
+    var spm1 = new StreamingKeyValueMapper<IndexedSource, 
+        IndexedTarget>((t, k, s) => t[k] = s[k], 
+        new List<string>() {
+            "ID", 
+            "Name", 
+            "DOB", 
+            "Value", 
+            "Worth", 
+            "Percentile" 
+        });
+    indexedTarget = spm1.Map(indexedSource, () => new IndexedTarget());
+    ...
+    // where the source is indexed
+    var spm2 = new StreamingFromKeyValueMapper<IndexedSource, Target>((s, k) => s[k]);
+    Target target = spm2.Map(indexedSource, () => new Target());
+    ...
+    // where the target is indexed
+    Source source = new Source();
+    var spm3 = new StreamingToKeyValueMapper<Source, IndexedTarget>((t, k, v) => t[k] = v);
+    indexedTarget = spm3.Map(source, () => new IndexedTarget());
 
+```
 As implementations of the StreamingGenericMapperBase, the StreamingKeyValueMapper, StreamingFromKeyValueMapper and StreamingToKeyValueMapper classes can also be used to stream through a collection of sources and map them to a collection of targets.
 ### Mendz.Library.Extensions
 #### Contents
